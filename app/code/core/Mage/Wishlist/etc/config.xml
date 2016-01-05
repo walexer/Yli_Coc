@@ -113,15 +113,6 @@
                 </args>
             </wishlist>
         </routers>
-        <translate>
-            <modules>
-                <Mage_Wishlist>
-                    <files>
-                        <default>Mage_Wishlist.csv</default>
-                    </files>
-                </Mage_Wishlist>
-            </modules>
-        </translate>
         <layout>
             <updates>
                 <wishlist module="Mage_Wishlist">
@@ -151,17 +142,6 @@
             <wishlist>/wishlist/</wishlist>
         </secure_url>
     </frontend>
-    <adminhtml>
-        <translate>
-            <modules>
-                <Mage_Wishlist>
-                    <files>
-                        <default>Mage_Wishlist.csv</default>
-                    </files>
-                </Mage_Wishlist>
-            </modules>
-        </translate>
-    </adminhtml>
     <default>
         <wishlist>
             <general>
