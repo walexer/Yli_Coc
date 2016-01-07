@@ -433,6 +433,14 @@ class Mage_Core_Model_Layout_Update
                 $updateFiles[] = $updateNode['file'];
             }
         }
+        //按约定加载布局xml文件  
+        $modules = Mage::getConfig()->getAliasConfig();
+        foreach ($modules as $alias => $moduleName){
+                if(!in_array($alias.'.xml', $updateFiles)){                       
+                    $updateFiles[] = $alias.'.xml';
+                }
+        }
+        
         // custom local layout updates file - load always last
         $updateFiles[] = 'local.xml';
         $layoutStr = '';

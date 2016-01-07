@@ -124,6 +124,13 @@ class Mage_Core_Model_Config extends Mage_Core_Model_Config_Base
      * @var array
      */
     protected $_eventAreas;
+    
+    /**
+     * Configuration for alias of modules
+     *
+     * @var array
+     */
+    protected $_aliasModules = array();
 
     /**
      * Flag cache for existing or already created directories
@@ -1630,5 +1637,27 @@ class Mage_Core_Model_Config extends Mage_Core_Model_Config_Base
             return $this->getModelClassName($factoryName);
         }
         return false;
+    }
+    
+     /**
+     * Get alias configuration
+     *
+     * @return  array
+     */
+    public function getAliasConfig()
+    {      
+        if (empty($this->_aliasModules)) {
+           $modules = (array)Mage::getConfig()->getNode('modules')->children();    
+                    foreach($modules as $moduleName => $moduleInfo){
+                        if($modules[$moduleName]->is('active')){                
+                            if($alias = $modules[$moduleName]->alias){                    
+                                $alias = (string)$alias;
+                                $this->_aliasModules[$alias] = $moduleName;
+                            }                
+                        }
+                    }
+                    
+        }
+        return $this->_aliasModules;
     }
 }
