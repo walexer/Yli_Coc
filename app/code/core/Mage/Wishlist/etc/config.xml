@@ -104,15 +104,6 @@
         </wishlist>
     </global>
     <frontend>
-        <routers>
-            <wishlist>
-                <use>standard</use>
-                <args>
-                    <module>Mage_Wishlist</module>
-                    <frontName>wishlist</frontName>
-                </args>
-            </wishlist>
-        </routers>
         <events>
             <customer_login>
                 <observers>

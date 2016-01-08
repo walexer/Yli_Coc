@@ -67,6 +67,17 @@ class Mage_Core_Controller_Varien_Router_Standard extends Mage_Core_Controller_V
                 $this->addModule($frontName, $modules, $routerName);
             }
         }
+        
+        //按约定加载routerName
+        if($configArea == 'frontend'){
+            $modules = Mage::getConfig()->getAliasConfig();
+            foreach ($modules as $alias => $moduleName){
+                    if(!$this->getModuleByFrontName($alias)){
+                        $this->addModule($alias, array($moduleName), $alias);                                
+                    }
+            }
+        }
+
     }
 
     public function fetchDefault()
