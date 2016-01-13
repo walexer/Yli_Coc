@@ -1258,6 +1258,12 @@ class Mage_Core_Model_Config extends Mage_Core_Model_Config_Base
                 $className = $config->getClassName();
             }
             if (empty($className)) {
+                $modules = $this->getAliasConfig();
+                if($modules[$group]){                    
+                    $className = $modules[$group].'_'.$groupType;
+                }
+            }
+            if (empty($className)) {
                 $className = 'mage_'.$group.'_'.$groupType;
             }
             if (!empty($class)) {
